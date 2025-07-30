@@ -7,12 +7,19 @@ import { RouterLink, RouterView } from 'vue-router'
     <header>
       <div class="wrapper">
         <nav>
-          <RouterLink to="/">Event</RouterLink> | 
-          <RouterLink to="/about"> About</RouterLink>
-          <RouterLink to="/students">Students</RouterLink>
+          <RouterLink :to="{name: 'event-list-view'}">Event</RouterLink> | 
+          <RouterLink :to="{name: 'about'}">About</RouterLink> |
+          <RouterLink :to="{name: 'students'}">Student</RouterLink>
         </nav>
+        <div class="page-size-selector">
+          <span>Page Size: </span>
+          <RouterLink :to="{ name: 'event-list-view', query: { page: 1, size: 2 }}">2</RouterLink> |
+          <RouterLink :to="{ name: 'event-list-view', query: { page: 1, size: 3 }}">3</RouterLink> |
+          <RouterLink :to="{ name: 'event-list-view', query: { page: 1, size: 4 }}">4</RouterLink> 
+        </div>
       </div>
     </header>
+
     <RouterView />
   </div>
 </template>
@@ -41,5 +48,14 @@ nav a.router-link-exact-active{
 
 h2{
   font-size: 20px;
+}
+
+.page-size-selector {
+  margin-top: 10px;
+}
+
+.page-size-selector a {
+  margin: 0 4px;
+  font-weight: normal;
 }
 </style>
